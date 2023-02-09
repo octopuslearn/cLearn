@@ -1,14 +1,17 @@
 
 #include <stdio.h>
+int a[2][3],i,j;
 
 int main()
 {
-    int a=1,b=2,*m,*n;
-    m=&a;
-    n=&b;
-    *m=10;
-    *n=20;
-    printf("a=%d b=%d",a,b);//a=10,b=20
-    return 0 ;              //变量的间接引用
-}                           //通过指针变量对
-                        //另一个变量进行引用
+    printf("输入6个整数:\n");
+    for(j=0;j<2;j++)
+        for(i=0;i<3;i++)
+            scanf("%d",&a[j]+i);
+    for(j=0;j<2;j++)
+    {
+        for(i=0;i<3;i++)
+            printf("%d ",*(a[j]+i));
+        printf("\n");
+    }
+}
