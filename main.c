@@ -1,21 +1,20 @@
 #include <stdio.h>
-int p[3][4],i,j;
-int (*a)[4];//行指针，4-每行4列
 
 int main()
 {
-    a=p;////必须将行指针指向二维数组0行
-    printf("输入12个数：\n");
-    for(j=0;j<3;j++)
-        for(i=0;i<4;i++)    
-            scanf("%d",*(a+j)+i);//&*(*(a+j)+i)
-            // scanf("%d",&a[j][i]);
-    for(j=0;j<3;j++)
-    {
-        for(i=0;i<4;i++)
-            printf("%d  ",*(*(a+j)+i));
-            // printf("%d  ",a[j][i]);
-        printf("\n");
-    }
+    // char *p;////scanf中为字符数组//////而字符指针并未为字符串分配内存
+    // scanf("%s",p);//////故而有错
+    // printf("%s",p);
+    // return ;
+
+    // char p[20];
+    // printf("请输入\n");
+    // scanf("%s",p);////输入wei da//////scanf不能输入空格，否则分隔号，相当于wei  da两个字符串
+    // printf("%s",p);////输出wei //////p 指第0个字符串，故而wei
+    // return ;
+
+    char a[20];
+    gets(a);////输入wei da///////gets可以输入带空格的字符串
+    printf("%s",a);////输出wei da
     return ;
 }
