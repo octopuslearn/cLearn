@@ -1,38 +1,39 @@
-#include <stdio.h>
-int max(int a);
 
-// /*自动变量*/
-// int main()
+// /*形参传递给实参，单向的，显然m,n的值无法交换*/
+//int max(int a,int b);
+// void main()
 // {
-//     int m;
-//     m=max(2);
-//     printf("第一次调用m=%d",m);//20
-//     m=max(3);
-//     printf("第二次调用m=%d",m); //30
+//     int m=2,n=3;
+//     max(m,n);
+//     printf("m=%d n=%d",m,n);//m=2,n=3
 //     return ;
 // }
 
-// int max(int a)
+// int max(int a,int b)
 // {
-//     int t=10;
-//     t=t*a;
-//     return t;
+//     int t;
+//     t=a;
+//     a=b;
+//     b=t;
+//     printf("a=%d b=%d\n",a,b);//a=3,b=2
+//     return ;////返回到了max(m,n);下一行即printf("m=%d n=%d",m,n);
 // }
 
-/*静态局部变量*/
+
+void swap(int *p,int *q);
 int main()
 {
-    int m;
-    m=max(2);
-    printf("第一次调用m=%d",m);//20
-    m=max(3);
-    printf("第二次调用m=%d",m); //60////故而当第二次调用时t=20
-    return ;
+    int a=2,b=3;
+    swap(&a,&b);
+    printf("a=%d b=%d",a,b);//a=3,b=2
+    return 0;
 }
 
-int max(int a)
+void swap(int *p,int *q)
 {
-    static int t=10;////静态局部变量只执行1次
-    t=t*a;
-    return t;
+    int t;////实现了跨函数引用，a,b主调函数定义 p,q被调函数定义
+    t=*p;//t=a////间接引用主调函数中a,b的值
+    *p=*q;//a=b
+    *q=t;//b=t
+    return ;
 }
