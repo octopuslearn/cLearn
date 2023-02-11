@@ -1,22 +1,21 @@
 
-/*输入三个数存入数组，并将第一个元素扩大十倍输出*/
-void swap(int *p);
+/*输入三个数存入数组，并将所有元素扩大十倍输出*/
+long swap(int p);
 int main()
 {
-    int a[3],i;
-    printf("写入3个整数：\n");
-    for(i=0;i<3;i++)
-        scanf("%d",&a[i]);
-    swap(a);
-    printf("整个元素：\n");
-    for(i=0;i<3;i++)
-        printf("%d ",a[i]);
+    int a,b;
+    printf("写入1个整数：\n");
+    scanf("%d",&a);
+    b=swap(a);
+    printf("!%d=%ld\n",a,b);
     return 0;
 }
-void swap(int *p)
+long swap(int p)
 {
-    int i;
-    for(i=0;i<3;i++)
-         *(p+i)=*(p+i)*10;
-    return ;
+    long i;
+    if(p==1)
+        i=1;
+    else
+        i=p*swap(p-1);
+    return i;
 }
